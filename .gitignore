@@ -11,10 +11,10 @@ coverage
 # production
 build
 
-# config/keys.js
+config/keys.js
 config/keys_dev.js
 config/keys_prod.js
-# config/keys.js
+
 
 # misc
 .DS_Store
