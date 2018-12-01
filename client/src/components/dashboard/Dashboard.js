@@ -10,40 +10,41 @@ import Spinner from "../common/Spinner";
 import isEmpty from "../../toolKit/isEmpty";
 
 class Dashboard extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {};
-  // }
-
   componentDidMount = () => {
     document.title = "Dashboard Page";
-    this.props.getCurrentUserProfile();
+
+    this.props.getCurrentUserProfile(this.props.auth.user.id);
   };
 
   render() {
     let dashboardContent;
     const { userProfile, loading } = this.props.profile;
 
-    if (isEmpty(userProfile)) {
-      dashboardContent = "Go to Create Your Profile";
+    if (userProfile === null || loading) {
+      dashboardContent = <Spinner />;
     } else {
-      if (userProfile === null || loading) {
-        dashboardContent = <Spinner />;
-      } else {
-        if (Object.keys(userProfile).length > 0) {
-          dashboardContent = (
-            <Container>
-              <h1>Dashboard Page</h1>
-              <Link to="/userProfile">
-                <Button color="blue">Go to current profile</Button>
-              </Link>
-              <Link to="/editProfile">
-                <Button color="blue">Edit Profile</Button>
-              </Link>
-            </Container>
-          );
-        }
+      if (isEmpty(userProfile)) {
+        dashboardContent = (
+          <Container>
+            <Link to="/editProfile">
+              <Button color="blue">Go to Create Your Profile</Button>
+            </Link>
+          </Container>
+        );
+      } else if (Object.keys(userProfile).length > 0) {
+        let userID = this.props.auth.user.id;
+
+        dashboardContent = (
+          <Container>
+            <h1>Dashboard Page</h1>
+            <Link to={`/userProfile/${userID}`}>
+              <Button color="blue">Go to current profile</Button>
+            </Link>
+            <Link to="/editProfile">
+              <Button color="blue">Edit Profile</Button>
+            </Link>
+          </Container>
+        );
       }
     }
 
@@ -58,8 +59,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getCurrentUserProfile: () => {
-    dispatch(getCurrentUserProfile());
+  getCurrentUserProfile: userID => {
+    dispatch(getCurrentUserProfile(userID));
   }
 });
 

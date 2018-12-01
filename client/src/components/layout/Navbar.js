@@ -136,12 +136,23 @@ class Navbar extends Component {
                   <Menu.Item
                     name="dashboard"
                     link={true}
-                    active={activeItem === "Dashboard"}
+                    active={activeItem === "dashboard"}
                     onClick={this.handleItemClick}
                     style={menuItemStyle}
                     linkto="/dashboard"
                   >
                     Dashboard
+                  </Menu.Item>
+
+                  <Menu.Item
+                    name="profilesList"
+                    link={true}
+                    active={activeItem === "profilesList"}
+                    onClick={this.handleItemClick}
+                    style={menuItemStyle}
+                    linkto="/profilesList"
+                  >
+                    Developers
                   </Menu.Item>
                 </Container>
 
@@ -157,14 +168,12 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired,
   clearCurrentProfile: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.errors
+  auth: state.auth
 });
 
 const mapDispatchToprops = dispatch => ({

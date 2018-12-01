@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 
-import {
-  Container,
-  Grid,
-  Segment,
-  Card,
-  Icon,
-  Button
-} from "semantic-ui-react";
+import { Grid, Card, Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 import "./UserProfile.css";
 
@@ -37,7 +31,6 @@ export default class bioSection extends Component {
     };
 
     const { userProfile } = this.props;
-    console.log(userProfile);
     const description = userProfile.bio;
 
     return (
@@ -84,9 +77,12 @@ export default class bioSection extends Component {
                         DOWNLOAD &nbsp;&nbsp; CV
                       </Button>
                       <Button.Or text="&" />
-                      <Button style={{ width: 180 }} as="button">
-                        MY &nbsp;&nbsp;WEBSITE
-                      </Button>
+
+                      <a href="https://github.com/ZhizhaoYang">
+                        <Button style={{ width: 180 }} as="button">
+                          MY &nbsp;&nbsp;GITHUB
+                        </Button>
+                      </a>
                     </Button.Group>
                   </Grid.Column>
                 </Card.Content>

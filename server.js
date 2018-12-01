@@ -1,8 +1,8 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-
 const mongoose = require("mongoose");
+
 const keys = require("./config/keys");
 const passport = require("passport");
 
@@ -15,12 +15,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
 
-// const db = keys.mongoDB_URI;
+const db = keys.mongoDB_URI;
 
 mongoose
   .connect(
-    // db,
-    process.env.MONGO_URI,
+    // db, // local mode
+    process.env.MONGO_URI, // production mode
+
     // The reason cause the deployment issue, Heroku's problem,
     // db URI should be like this format process.env.MONGO_URI in Heroku
     { useNewUrlParser: true }

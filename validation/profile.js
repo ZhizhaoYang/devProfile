@@ -22,9 +22,9 @@ module.exports = validateProfileInput = profile => {
     errors.jobStatus = "Job status field is required";
   }
 
-  if (Validator.isEmpty(profile.skills)) {
-    errors.skills = "Skills field is required";
-  }
+  // if (Validator.isEmpty(profile.skills)) {
+  //   errors.skills = "Skills field is required";
+  // }
 
   if (!isEmpty(profile.website)) {
     if (!Validator.isURL(profile.website)) {

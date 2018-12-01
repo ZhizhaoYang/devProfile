@@ -67,6 +67,8 @@ router.post(
     if (req.body.profileUserName)
       profileFields.profileUserName = req.body.profileUserName;
 
+    if (req.body.phone) profileFields.phone = req.body.phone;
+
     if (req.body.company) profileFields.company = req.body.company;
 
     if (req.body.website) profileFields.website = req.body.website;
@@ -80,7 +82,7 @@ router.post(
     if (req.body.githubusername)
       profileFields.githubusername = req.body.githubusername;
 
-    if (typeof req.body.skills !== undefined) {
+    if (req.body.skills) {
       // profileFields.skills = req.body.skills.split(",").map(skill => {
       //   return skill.trim();
       // });
@@ -115,7 +117,7 @@ router.post(
           profileUserName: profileFields.profileUserName
         }).then(profile => {
           if (profile) {
-            errors.handle = "The profile name already exists";
+            errors.profileUserName = "The profile name already exists";
             return res.status(400).json(errors);
           }
 
@@ -174,7 +176,7 @@ router.post(
     if (req.body.facebook) options.socialLinks.facebook = req.body.facebook;
     if (req.body.instagram) options.socialLinks.instagram = req.body.instagram;
 
-    if (typeof req.body.skills !== undefined) {
+    if (req.body.skills) {
       // options.skills = req.body.skills.split(",").map(skill => {
       //   return skill.trim();
       // });
@@ -339,16 +341,16 @@ router.post(
   }
 );
 
-// @route   GET api/profile/user/:user_id
+// @route   GET api/profile/:user_id
 // @desc    GET profile by user id
 // @access  Public
-router.get("/user/:user_id", (req, res) => {
+router.get("/:user_id", (req, res) => {
   const errors = {};
 
   // Find the profile by user_id that user input
   // :user_id is stored in req.params
   Profile.findOne({ user: req.params.user_id })
-    .populate("user", ["name, email"])
+    .populate("user", ["name", "email"])
     .then(profile => {
       if (!profile) {
         errors.noProfile = "There is no profile for this user";
@@ -361,5 +363,20 @@ router.get("/user/:user_id", (req, res) => {
       res.status(400).json({ error: "User id format invalid" });
     });
 });
+
+// @route   POST api/profile/addSkills
+// @desc    POST profile skills
+// @access  Private
+router.post(
+  "/addSkills",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    // To Do:
+    // 1. validate the skills input
+    // 2. find the profile by { user: req.user.id }
+    // 3. add the new skills to skills array
+    // 4. save db and return new skills array
+  }
+);
 
 module.exports = router;

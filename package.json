@@ -1,7 +1,7 @@
 {
   "name": "dev-profile",
   "version": "1.0.0",
-  "description": "A web app for creating profiles",
+  "description": "A web app for creating profile",
   "author": {
     "name": "Zhizhao Yang"
   },
@@ -35,8 +35,6 @@
   "keywords": [
     "node",
     "express",
-    "create-react-app",
-    "react",
-    "redux"
+    "create-react-app"
   ]
 }

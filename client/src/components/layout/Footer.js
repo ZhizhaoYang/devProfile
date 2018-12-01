@@ -19,7 +19,7 @@ export default () => {
                 <Grid.Row>
                   <Grid.Column width={16}>
                     <Header as="h4" color="teal">
-                      Copyright &copy; {new Date().getFullYear()} Dev Portfio
+                      Copyright &copy; {new Date().getFullYear()} Dev Profile
                     </Header>
                   </Grid.Column>
                 </Grid.Row>

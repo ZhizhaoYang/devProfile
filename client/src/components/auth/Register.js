@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   Container,
   Button,
-  Checkbox,
   Form,
   Header,
   Segment,
@@ -172,9 +171,9 @@ class Register extends Component {
                       error={errors.password2}
                     />
 
-                    <Form.Field style={formItemStyle}>
+                    {/* <Form.Field style={formItemStyle}>
                       <Checkbox label="I agree to the Terms and Conditions" />
-                    </Form.Field>
+                    </Form.Field> */}
                     <Button
                       type="submit"
                       fluid

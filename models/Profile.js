@@ -48,10 +48,22 @@ const ProfileSchema = new Schema({
     required: true
   },
 
-  skills: {
-    type: [Object],
-    required: true
-  },
+  skills: [
+    {
+      type: Object,
+
+      id: {
+        type: Number
+      },
+      skillName: {
+        type: String,
+        required: true
+      },
+      percentage: {
+        type: String
+      }
+    }
+  ],
 
   bio: {
     type: String
