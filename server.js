@@ -3,7 +3,6 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const keys = require("./config/keys");
 const passport = require("passport");
 
 const app = express();
@@ -15,7 +14,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
 
-const db = keys.mongoDB_URI;
+// const db = keys.mongoDB_URI;
+// const keys = require("./config/keys");
 
 mongoose
   .connect(
