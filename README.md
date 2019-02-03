@@ -24,6 +24,5 @@ yarn dev
 ```
 Website Address: https://devprofile365.herokuapp.com/
 Github:          https://github.com/ZhizhaoYang
-Youtube Video:   https://www.youtube.com/watch?v=mGt3eRoCnDA
 
 ```
